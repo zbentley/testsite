@@ -6,7 +6,7 @@
         const data = await res.json();
 
         const files = data.tree
-          .filter(item => item.type === 'blob' && item.name != '.gitignore')
+          .filter(item => item.type === 'blob' && ! item.path.endsWith('.gitignore'))
           .sort((a, b) => a.path.localeCompare(b.path));
 
         let html = '<ul>';
